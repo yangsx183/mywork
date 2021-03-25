@@ -21,7 +21,7 @@ public class OrgController {
     public Object orgSynchronous(@RequestBody Map<String,String> map) {
 
         for(String key : map.keySet()){
-            System.out.println("key-->"+key+",value-->"+map.get(key));
+            System.out.println("key1-->"+key+",value-->"+map.get(key));
         }
 
         String type = map.get("type");
