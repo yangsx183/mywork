@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jit.mapper.OrgMapper">
+    <select id="listOrg" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from JDP_OU_DEPT1 where DEPT_ID=#{DEPT_ID}
+    </select>
+
+    <insert id="insertOrg" parameterType="java.util.Map">
+        insert into JDP_OU_DEPT1(
+        DEPT_ID, DEPT_NAME, DEPT_CODE, PARENT, STATUS, ORG_ID, CREATE_USER, MODIFY_DATE, MODIFY_USER
+        )values(
+        #{DEPT_ID,jdbcType=VARCHAR}, #{DEPT_NAME,jdbcType=VARCHAR}, #{DEPT_CODE,jdbcType=VARCHAR},
+        #{PARENT,jdbcType=VARCHAR}, #{STATUS,jdbcType=VARCHAR}, #{ORG_ID,jdbcType=VARCHAR},
+        #{CREATE_USER,jdbcType=VARCHAR}, sysdate, #{MODIFY_USER,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="updateOrg" parameterType="java.util.Map">
+        update JDP_OU_DEPT1 set
+        DEPT_NAME =#{DEPT_NAME,jdbcType=VARCHAR},
+        DEPT_CODE =#{DEPT_CODE,jdbcType=VARCHAR},
+        PARENT =#{PARENT,jdbcType=VARCHAR}
+        where DEPT_ID=#{DEPT_ID}
+    </insert>
+
+    <delete id="deleteOrg" parameterType="java.util.Map">
+        delete JDP_OU_DEPT1 where DEPT_ID=#{DEPT_ID}
+    </delete>
+</mapper>
